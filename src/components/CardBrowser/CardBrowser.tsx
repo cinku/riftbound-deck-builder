@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState, useMemo } from "react";
 
-// You can replace this with a proper type later
+// todo: move to a separate file
 type Card = {
     id: string;
     name: string;
@@ -12,7 +12,6 @@ type Card = {
 };
 
 export default function CardBrowser({ cards }: { cards: Card[] }) {
-    console.log(cards);
     const [query, setQuery] = useState("");
     const [type, setType] = useState("All");
     const [selectedColors, setSelectedColors] = useState<string[]>([]);
@@ -59,7 +58,7 @@ export default function CardBrowser({ cards }: { cards: Card[] }) {
                     <input
                         type="text"
                         placeholder="Search cards..."
-                        className="text-white-900 block w-3xs rounded-lg border border-gray-300 bg-white p-2.5 text-sm focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
+                        className="text-white-900 block w-3xs rounded-lg border border-zinc-800 bg-black p-2.5 text-sm focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
                         value={query}
                         onChange={(e) => setQuery(e.currentTarget.value)}
                     />
@@ -67,7 +66,7 @@ export default function CardBrowser({ cards }: { cards: Card[] }) {
                         <select
                             value={type}
                             onChange={(e) => setType(e.currentTarget.value)}
-                            className="text-white-900 block w-3xs cursor-pointer rounded-lg border border-gray-300 bg-white p-2.5 text-sm focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
+                            className="text-white-900 block w-3xs cursor-pointer rounded-lg border border-zinc-800 bg-black p-2.5 text-sm focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
                         >
                             <option value="All">All</option>
                             {types.map((t) => (
@@ -84,8 +83,8 @@ export default function CardBrowser({ cards }: { cards: Card[] }) {
                                         key={color}
                                         className={`flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border ${
                                             isActive
-                                                ? "border-blue-500 bg-blue-100"
-                                                : "border-gray-300 bg-white"
+                                                ? "border-blue-500 bg-gray-800"
+                                                : "border-zinc-800 bg-black"
                                         }`}
                                         onClick={() => toggleColor(color)}
                                     >
